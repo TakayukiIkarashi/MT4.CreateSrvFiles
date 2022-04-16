@@ -1,6 +1,6 @@
 Option Explicit
 
-'MT4‚ÌƒT[ƒo[ƒŠƒXƒg
+'MT4ã®ã‚µãƒ¼ãƒãƒ¼ãƒªã‚¹ãƒˆ
 Const MT4_SERVER_LIST = "https://www.trade-copier.com/index.php/features/supported-brokers/mt4-brokers-list"
 
 Dim fso
@@ -9,62 +9,62 @@ Set fso = CreateObject("Scripting.FileSystemObject")
 Dim sh
 Set sh = CreateObject("WScript.Shell")
 
-'ƒƒCƒ“ˆ—Às
+'ãƒ¡ã‚¤ãƒ³å‡¦ç†å®Ÿè¡Œ
 Call Main()
 
-'ƒƒCƒ“ˆ—
+'ãƒ¡ã‚¤ãƒ³å‡¦ç†
 Sub Main()
-    'ŒxƒƒbƒZ[ƒW
+    'è­¦å‘Šãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
     Dim msg
     msg = ""
-    msg = msg & "<<’ˆÓI>>" & vbCrLf
+    msg = msg & "<<æ³¨æ„ï¼>>" & vbCrLf
     msg = msg & vbCrLf
-    msg = msg & "–‘O‚ÉMetaTrader‚ğ‹N“®‚µAuƒtƒ@ƒCƒ‹(F)vƒƒjƒ…[‚æ‚èuƒfƒ‚ŒûÀ‚Ì\¿(A)v‚ğ‘I‘ğ‚µA"
-    msg = msg & "uƒfƒ‚ŒûÀ‚Ì\¿vƒEƒBƒ“ƒhƒE‚ğŠJ‚¢‚Ä‚¨‚¢‚Ä‚­‚¾‚³‚¢B" & vbCrLf
+    msg = msg & "äº‹å‰ã«MetaTraderã‚’èµ·å‹•ã—ã€ã€Œãƒ•ã‚¡ã‚¤ãƒ«(F)ã€ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚ˆã‚Šã€Œãƒ‡ãƒ¢å£åº§ã®ç”³è«‹(A)ã€ã‚’é¸æŠã—ã€"
+    msg = msg & "ã€Œãƒ‡ãƒ¢å£åº§ã®ç”³è«‹ã€ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’é–‹ã„ã¦ãŠã„ã¦ãã ã•ã„ã€‚" & vbCrLf
     msg = msg & vbCrLf
-    msg = msg & "‚Ü‚½AMetaTraderˆÈŠO‚Ì‚·‚×‚Ä‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ğ•Â‚¶‚Ä‚­‚¾‚³‚¢B" & vbCrLf
+    msg = msg & "ã¾ãŸã€MetaTraderä»¥å¤–ã®ã™ã¹ã¦ã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’é–‰ã˜ã¦ãã ã•ã„ã€‚" & vbCrLf
     msg = msg & vbCrLf
-    msg = msg & "‚±‚ÌƒXƒNƒŠƒvƒg‚ğÀsŒãA10•bˆÈ“à‚Éuƒfƒ‚ŒûÀ‚Ì\¿vƒEƒBƒ“ƒhƒE‚ğÅ‘O–Ê‚É‚µ‚Ä‚¨‚¢‚Ä‚­‚¾‚³‚¢B"
+    msg = msg & "ã“ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’å®Ÿè¡Œå¾Œã€10ç§’ä»¥å†…ã«ã€Œãƒ‡ãƒ¢å£åº§ã®ç”³è«‹ã€ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’æœ€å‰é¢ã«ã—ã¦ãŠã„ã¦ãã ã•ã„ã€‚"
     Call MsgBox(msg, vbExclamation + vbOkOnly)
 
     Dim isCrtLst
     isCrtLst = True
     msg = ""
-    msg = msg & "ƒuƒ[ƒJ[ƒŠƒXƒg‚ğXV‚µ‚Ü‚·‚©H"
+    msg = msg & "ãƒ–ãƒ­ãƒ¼ã‚«ãƒ¼ãƒªã‚¹ãƒˆã‚’æ›´æ–°ã—ã¾ã™ã‹ï¼Ÿ"
     If (MsgBox(msg, vbQuestion + vbYesNo + vbDefaultButton2) <> vbYes) Then
         isCrtLst = False
     End If
 
     msg = ""
-    msg = msg & "Às‚µ‚Ü‚·B‚æ‚ë‚µ‚¢‚Å‚·‚©H"
+    msg = msg & "å®Ÿè¡Œã—ã¾ã™ã€‚ã‚ˆã‚ã—ã„ã§ã™ã‹ï¼Ÿ"
     If (MsgBox(msg, vbQuestion + vbYesNo + vbDefaultButton2) <> vbYes) Then
         Exit Sub
     End If
 
-    'ƒXƒNƒŠƒvƒg‹­§’â~ƒtƒ@ƒCƒ‹‚ğ‹N“®
+    'ã‚¹ã‚¯ãƒªãƒ—ãƒˆå¼·åˆ¶åœæ­¢ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èµ·å‹•
     sh.Run GetParentDir() & "StopWScript.exe"
 
-    '10•bˆÈ“à‚ÉMetaTrader‚ğ‹N“®‚µAuƒfƒ‚ŒûÀ‚Ì\¿vƒEƒBƒ“ƒhƒE‚ğŠJ‚¢‚Ä‚¨‚¢‚Ä‚à‚ç‚¤
+    '10ç§’ä»¥å†…ã«MetaTraderã‚’èµ·å‹•ã—ã€ã€Œãƒ‡ãƒ¢å£åº§ã®ç”³è«‹ã€ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’é–‹ã„ã¦ãŠã„ã¦ã‚‚ã‚‰ã†
     WScript.Sleep 10000
 
-    '‚·‚×‚Ä‚ÌIE‚ÌƒvƒƒZƒX‚ğ‹­§I—¹
+    'ã™ã¹ã¦ã®IEã®ãƒ—ãƒ­ã‚»ã‚¹ã‚’å¼·åˆ¶çµ‚äº†
     Call TerminateIE()
 
     Dim brklst
     brklst = GetListfilePath()
 
-    'ƒuƒ[ƒJ[ƒŠƒXƒg¶¬
+    'ãƒ–ãƒ­ãƒ¼ã‚«ãƒ¼ãƒªã‚¹ãƒˆç”Ÿæˆ
     If (isCrtLst) Then
         If (CreateBrokerList(brklst) = False) Then
             Exit Sub
         End If
     End If
 
-    'ƒuƒ[ƒJ[ƒŠƒXƒg“Ç‚İ‚İ
+    'ãƒ–ãƒ­ãƒ¼ã‚«ãƒ¼ãƒªã‚¹ãƒˆèª­ã¿è¾¼ã¿
     Dim brokers
     Call ReadBrokerList(brklst, brokers)
 
-    'ƒuƒ[ƒJ[ƒŠƒXƒg‚Ì“à—e‚ğA1Œ‚¸‚Âuƒfƒ‚ŒûÀ‚Ì\¿vƒEƒBƒ“ƒhƒE‚É‘Å‚¿‚İ
+    'ãƒ–ãƒ­ãƒ¼ã‚«ãƒ¼ãƒªã‚¹ãƒˆã®å†…å®¹ã‚’ã€1ä»¶ãšã¤ã€Œãƒ‡ãƒ¢å£åº§ã®ç”³è«‹ã€ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«æ‰“ã¡è¾¼ã¿
     Dim i
     For i = 0 To UBound(brokers)
         Dim brk
@@ -89,7 +89,7 @@ Sub Main()
     Next
 End Sub
 
-'IE‚ğ‚·‚×‚Ä‹­§I—¹‚·‚é
+'IEã‚’ã™ã¹ã¦å¼·åˆ¶çµ‚äº†ã™ã‚‹
 Sub TerminateIE()
     Const PROC_NAME = "iexplore.exe"
 
@@ -112,26 +112,26 @@ Sub TerminateIE()
     On Error GoTo 0
 End Sub
 
-'ƒuƒ[ƒJ[ƒŠƒXƒg‚ğì¬
+'ãƒ–ãƒ­ãƒ¼ã‚«ãƒ¼ãƒªã‚¹ãƒˆã‚’ä½œæˆ
 Function CreateBrokerList(ByVal brklst)
     CreateBrokerList = False
 
-    'ƒlƒbƒg‚©‚çƒuƒ[ƒJ[ƒŠƒXƒg‚ğæ“¾
+    'ãƒãƒƒãƒˆã‹ã‚‰ãƒ–ãƒ­ãƒ¼ã‚«ãƒ¼ãƒªã‚¹ãƒˆã‚’å–å¾—
     Dim s
     s = GetHTML()
     If (s = "") Then
-        Call MsgBox("ƒuƒ[ƒJ[ƒŠƒXƒg‚Ìæ“¾‚É¸”s‚µ‚Ü‚µ‚½B", vbCritical + vbOkOnly)
+        Call MsgBox("ãƒ–ãƒ­ãƒ¼ã‚«ãƒ¼ãƒªã‚¹ãƒˆã®å–å¾—ã«å¤±æ•—ã—ã¾ã—ãŸã€‚", vbCritical + vbOkOnly)
         Exit Function
     End If
 
-    'ŠJnˆÊ’u
+    'é–‹å§‹ä½ç½®
     Dim ps
     ps = InStr(1, s, "<br>")
     Do
         ps = ps - 1
 
         If (ps < 1) Then
-            Call MsgBox("ƒuƒ[ƒJ[ƒŠƒXƒg‚Ìæ“¾æ‚ÌHTML‚É•ÏX‚ª‚ ‚Á‚½‚æ‚¤‚Å‚·B", vbCritical + vbOkOnly)
+            Call MsgBox("ãƒ–ãƒ­ãƒ¼ã‚«ãƒ¼ãƒªã‚¹ãƒˆã®å–å¾—å…ˆã®HTMLã«å¤‰æ›´ãŒã‚ã£ãŸã‚ˆã†ã§ã™ã€‚", vbCritical + vbOkOnly)
             Exit Function
         End If
 
@@ -141,7 +141,7 @@ Function CreateBrokerList(ByVal brklst)
         End If
     Loop
 
-    'I—¹ˆÊ’u
+    'çµ‚äº†ä½ç½®
     Dim pe
     pe = InStr(ps, s, "</span>")
 
@@ -149,7 +149,7 @@ Function CreateBrokerList(ByVal brklst)
     r = Mid(s, ps, pe - ps)
     r = Replace(r, "<br>", vbCrLf)
 
-    'ƒuƒ[ƒJ[ƒŠƒXƒg‚ğ‘‚«‚İ
+    'ãƒ–ãƒ­ãƒ¼ã‚«ãƒ¼ãƒªã‚¹ãƒˆã‚’æ›¸ãè¾¼ã¿
     Dim fw
     Set fw = fso.OpenTextFile(brklst, 2)
     Call fw.Write(r)
@@ -158,7 +158,7 @@ Function CreateBrokerList(ByVal brklst)
     CreateBrokerList = True
 End Function
 
-'ƒuƒ[ƒJ[ƒŠƒXƒg‚ÌHTML‚ğæ“¾
+'ãƒ–ãƒ­ãƒ¼ã‚«ãƒ¼ãƒªã‚¹ãƒˆã®HTMLã‚’å–å¾—
 Function GetHTML()
     On Error Resume Next
 
@@ -191,7 +191,7 @@ Function GetHTML()
     GetHTML = html
 End Function
 
-'ƒuƒ[ƒJ[ƒŠƒXƒg‚ğ“Ç‚İ‚İA”z—ñ‚ÉŠi”[
+'ãƒ–ãƒ­ãƒ¼ã‚«ãƒ¼ãƒªã‚¹ãƒˆã‚’èª­ã¿è¾¼ã¿ã€é…åˆ—ã«æ ¼ç´
 Sub ReadBrokerList(ByVal fp, ByRef brokers)
     Dim f
     Set f = fso.OpenTextFile(fp)
@@ -204,12 +204,12 @@ Sub ReadBrokerList(ByVal fp, ByRef brokers)
     brokers = Split(s, vbCrLf)
 End Sub
 
-'ƒuƒ[ƒJ[ƒŠƒXƒg‚ÌƒpƒX‚ğ•Ô‚·
+'ãƒ–ãƒ­ãƒ¼ã‚«ãƒ¼ãƒªã‚¹ãƒˆã®ãƒ‘ã‚¹ã‚’è¿”ã™
 Function GetListfilePath()
     GetListfilePath = GetParentDir() & "broker.lst"
 End Function
 
-'‚±‚ÌƒXƒNƒŠƒvƒgƒtƒ@ƒCƒ‹‚ª‘¶İ‚·‚éƒfƒBƒŒƒNƒgƒŠ‚ÌƒpƒX‚ğ•Ô‚·
+'ã“ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãƒ‘ã‚¹ã‚’è¿”ã™
 Function GetParentDir()
     GetParentDir = fso.getParentFolderName(WScript.ScriptFullName) & "\"
 End Function
