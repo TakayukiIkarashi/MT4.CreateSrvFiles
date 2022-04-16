@@ -1,4 +1,4 @@
-# MT4_Create_srv_Files
+# MT4 Create srv Files
 MT4_Create_srv_Filesは、MT4の「srv」ファイルを自動生成するためのVBScriptファイルです。  
 MT4の場合、MTサーバー名とIPアドレスを関連付けする必要があります。  
 MTサーバー名とIPアドレスの関連付けが行われると、データフォルダの中に拡張子が「srv」というファイルが生成されます。  
